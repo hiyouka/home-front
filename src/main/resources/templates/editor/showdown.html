@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="utf-8" />
+    <title>Simple example - Editor.md examples</title>
+    <link rel="stylesheet" th:href="@{editor/css/style.css}" href="editor/css/style.css" />
+    <link rel="stylesheet" th:href="@{editor/css/editormd.css}" href="editor/css/editormd.css" />
+    <link rel="stylesheet" th:href="@{blog/assets/css/amazeui.min.css}" />
+    <link rel="stylesheet" th:href="@{blog/css/blog/base.css}" />
+    <!--<link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />-->
+</head>
+
+<style>
+
+</style>
+<body>
+
+<div id="layout">
+    <header>
+        <div class="am-g">
+            <div class="am-u-sm-10">
+                <input type="text" class="remove_input_line" maxlength="100" placeholder="输入文章标题">
+            </div>
+            <!--<div class="am-u-sm-8"></div>-->
+            <div class="am-fr">
+                <button type="button" class="am-btn .am-radius am-btn-primary">取消</button>
+            </div>
+            <div class="am-fr">
+                <button type="button" class="am-btn .am-radius am-btn-primary" data-am-modal="{target: '#subModel', closeViaDimmer: 0, width: 600, height: 500}">发布文章</button>
+            </div>
+        </div>
+    </header>
+    <div id="test-editormd">
+                <textarea style="display:none;">[TOC]
+
+#### Disabled options
+
+- TeX (Based on KaTeX);
+- Emoji;
+- Task lists;
+- HTML tags decode;
+- Flowchart and Sequence Diagram;
+
+#### Editor.md directory
+
+    editor.md/
+            lib/
+            css/
+            scss/
+            tests/
+            fonts/
+            images/
+            plugins/
+            examples/
+            languages/
+            editormd.js
+            <span class="."></span>
+
+```html
+&lt;!-- English --&gt;
+&lt;script src="../dist/js/languages/en.js"&gt;&lt;/script&gt;
+
+&lt;!-- 繁體中文 --&gt;
+&lt;script src="../dist/js/languages/zh-tw.js"&gt;&lt;/script&gt;
+```
+</textarea>
+    </div>
+</div>
+<!--<script type="text/javascript" th:src="@{js/vendor/jquery-1.11.2.min.js}"    src="js/vendor/jquery-1.11.2.min.js"></script>-->
+<script type="text/javascript" th:src="@{blog/assets/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{editor/js/editormd.min.js}"></script>
+<script type="text/javascript" th:src="@{blog/assets/js/amazeui.min.js}"></script>
+<script type="text/javascript" th:src="@{blog/js/blog/base.js}"></script>
+
+<script type="text/javascript">
+    var testEditor;
+
+    $(function() {
+        testEditor = editormd("test-editormd", {
+            width   : "90%",
+            height  : 640,
+            syncScrolling : "single",
+            path    : "[[@{editor/lib/}]]"
+        });
+        /*
+        // or
+        testEditor = editormd({
+            id      : "test-editormd",
+            width   : "90%",
+            height  : 640,
+            path    : "../lib/"
+        });
+        */
+    });
+</script>
+
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="subModel">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">发布文章
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            <div class=" am-g">
+                <div class="am-u-sm-3">
+                    <label >文章标签:</label>
+                </div>
+                <div class="am-u-sm-2">
+                    <span class="am-icon-plus-circle"/>
+                </div>
+                <div class="am-u-sm-2"></div>
+                <div class="am-u-sm-2"></div>
+                <div class="am-u-sm-2"></div>
+                <div class="am-u-sm-2 am-u-end"></div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-sm-3 am-fl">
+                    <label >个人分类:</label>
+                </div>
+                <div class="am-u-sm-2 am-fl">
+                    <span class="am-icon-plus-circle"/>
+                </div>
+                <div class="am-u-sm-2 am-fl"></div>
+                <div class="am-u-sm-2 am-fl"></div>
+                <div class="am-u-sm-2 am-fl"></div>
+                <div class="am-u-sm-2 am-fl am-u-end"></div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-sm-10 am-fr">
+                    <div class="am-panel am-panel-default">
+                        <div class="am-panel-bd">
+                            <div class=" am-g"> <!-- start 68.21 add 40.94  -->
+                                <div class="am-u-sm-6">
+                                    <label class="am-checkbox">
+                                        <input type="checkbox" value="" data-am-ucheck>
+                                        spring123
+                                    </label>
+                                </div>
+                                <div class="am-u-sm-6">
+                                    <label class="am-checkbox">
+                                        <input type="checkbox" value="" data-am-ucheck>
+                                        mysql
+                                    </label>
+                                </div>
+                            </div>
+                            <!--<table class="">-->
+                                <!--<tbody>-->
+                                <!--<tr>-->
+                                    <!--<td class="am-sm-text-left">-->
+                                        <!--<label class="am-checkbox">-->
+                                            <!--<input type="checkbox" value="" data-am-ucheck>-->
+                                            <!--spring-->
+                                        <!--</label>-->
+                                    <!--</td>-->
+                                    <!--<td class="am-sm-text-left">-->
+                                        <!--<label class="am-checkbox">-->
+                                            <!--<input type="checkbox" value="" data-am-ucheck>-->
+                                            <!--mysql-->
+                                        <!--</label>-->
+
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                <!--</tbody>-->
+                            <!--</table>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
